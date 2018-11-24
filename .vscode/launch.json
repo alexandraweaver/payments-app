@@ -7,6 +7,18 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Test payment",
+            "program": "${workspaceFolder}/v1/src/objects/payment.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test check",
+            "program": "${workspaceFolder}/v1/src/objects/check.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Test restaurant",
             "program": "${workspaceFolder}/v1/src/objects/restaurant.js"
         }

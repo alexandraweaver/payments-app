@@ -32,34 +32,62 @@ class Restaurant {
             });
         });
     }
+
+    static getRandId(connectionPool, callback) {
+        // Async call to the DB
+        connectionPool.getConnection(function(err, conn) {
+            let query = "SELECT id AS rand_id FROM restaurant ORDER BY RAND() LIMIT 1 ";
+
+            conn.query(query, function(err, rows){
+                if(err) {
+                    return callback(err);
+                } else {
+                    let result = rows[0]["rand_id"]; 
+                    return callback(null, result);
+                }
+            });
+        });
+    }
 }
 
 
+module.exports = Restaurant;
 
 
-// Goes in app.js in future
+/* TEST CODE */
+// const mysql = require('mysql2');
 
-const mysql = require('mysql2');
+// const opts = {
+//     host: "localhost",
+//     user: "root",
+//     password: "mysql",
+//     port: 3307,
+//     database: "payments",
+//     multipleStatements: true
+// };
 
-const opts = {
-    host: "localhost",
-    user: "root",
-    password: "mysql",
-    port: 3307,
-    database: "payments",
-    multipleStatements: true
-};
 
-let pool = mysql.createPool(opts);
+/* TEST Restaurant.getRandId(connectionPool, callback) */
+// let pool = mysql.createPool(opts);
 
-let restaurant = new Restaurant(pool);
+// Restaurant.getRandId(pool, function (err, result) {
+//     if(err) {
+//         console.log("Finished testing Restaurant.getRandId() with error: ", err);
+//     } else {
+//         console.log("Finished testing Restaurant.getRandId() with result: ", result);
+//     }
+// });
 
-restaurant.generateMock();
-restaurant.insert(function(err, _restaurant) {
-    if(err) {
-        console.log("Exited with error: ", JSON.stringify(err));
-    } else {
-        console.log("Successfully created & inserted new restaurant object: ", 
-                        _restaurant);
-    }
-});
+
+/* TEST RESTAURANT CREATION & INSERTION */
+// let restaurant = new Restaurant(pool);
+
+// restaurant.generateMock();
+// restaurant.insert(function(err, _restaurant) {
+//     if(err) {
+//         console.log("Exited with error: ", JSON.stringify(err));
+//     } else {
+//         console.log("Successfully created & inserted new restaurant object: ", 
+//                         _restaurant);
+//     }
+// });
