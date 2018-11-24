@@ -59,7 +59,7 @@ BEGIN
             ROLLBACK;
         END;
     START TRANSACTION;
-        INSERT INTO restaurant(check_id, amount, credit_card_num) 
+        INSERT INTO payment(check_id, amount, credit_card_num) 
         VALUES (in_check_id, in_amount, in_credit_card_num);
         SET payment_id = LAST_INSERT_ID();
     COMMIT;

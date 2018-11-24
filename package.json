@@ -1,0 +1,25 @@
+{
+  "name": "payments-app",
+  "version": "1.0.0",
+  "description": "Practice app to process restaurant payments",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aldenweaver/payments-app.git"
+  },
+  "author": "Michael Weaver & Alden Weaver",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aldenweaver/payments-app/issues"
+  },
+  "homepage": "https://github.com/aldenweaver/payments-app#readme",
+  "dependencies": {
+    "async": "^2.6.1",
+    "chance": "^1.0.16",
+    "mysql2": "^1.6.4",
+    "underscore": "^1.9.1"
+  }
+}
